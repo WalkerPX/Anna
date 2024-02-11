@@ -10,7 +10,7 @@
       font-family: Arial, sans-serif;
     }
     #container {
-      margin-top: 20px;
+      margin-top: 100px;
     }
     #gif {
       width: 50%; /* Adjust the size as needed */
@@ -40,18 +40,35 @@
   <img id="gif" src="bear1.gif" alt="Bear GIF">
   <h2>Will you be my Valentine?</h2>
   <button id="yesButton" onclick="redirectToYippee()">Yes, of course!!!</button>
-  <button id="noButton" onclick="makeButtonBigger()">No... (will make me sad)</button>
+  <button id="noButton" onclick="promptUser()">No... (will make me sad)</button>
 </div>
 
 <script>
+  var phrases = [
+    "Are you sure?",
+    "Do you really want to?",
+    "Are you positive?",
+    "Are you confident about that?",
+    "Do you stand by your choice?",
+    "Are you clear on this?",
+    "Is there no doubt in your mind?",
+    "Do you want to reconsider?",
+    "Are you sure you know what you're doing?",
+    "Is that your final answer?"
+  ];
+
   function redirectToYippee() {
-    window.location.href = "yippee.html";
+    // Add code to handle redirection or any other action on "Yes" click
   }
 
-  function makeButtonBigger() {
-    var yesButton = document.getElementById("yesButton");
-    var currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
-    yesButton.style.fontSize = (currentSize * 1.25) + "px";
+  function getRandomPhrase() {
+    var randomIndex = Math.floor(Math.random() * phrases.length);
+    return phrases[randomIndex];
+  }
+
+  function promptUser() {
+    var randomPhrase = getRandomPhrase();
+    alert(randomPhrase);
   }
 </script>
 
