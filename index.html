@@ -49,10 +49,11 @@
   }
 
   function makeButtonBigger() {
-    document.getElementById("yesButton").style.fontSize = "20px";
+    var yesButton = document.getElementById("yesButton");
+    var currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+    yesButton.style.fontSize = (currentSize * 1.1) + "px";
   }
 </script>
 
 </body>
 </html>
-
