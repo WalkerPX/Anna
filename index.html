@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Will You Be My Valentine?</title>
+  <title>YIPPEE!</title>
   <style>
     body {
       text-align: center;
@@ -15,32 +15,28 @@
     #gif {
       width: 50%; /* Adjust the size as needed */
     }
-    #yesButton, #noButton {
+    #celebrateButton, #yesButton {
       font-size: 16px;
       padding: 10px 20px;
-      margin: 10px;
-    }
-    #yesButton {
-      background-color: #4CAF50; /* Green color for the Yes button */
+      margin-top: 20px;
+      background-color: #4CAF50; /* Green color for the buttons */
       color: white;
-    }
-    #noButton {
-      background-color: #FF0000; /* Red color for the No button */
-      color: white;
-    }
-    #noButton:hover {
-      font-size: 20px;
       cursor: pointer;
+    }
+    #partyImage {
+      max-width: 100%;
+      height: auto;
     }
   </style>
 </head>
 <body>
 
 <div id="container">
-  <img id="gif" src="bear1.gif" alt="Bear GIF">
-  <h2>Will you be my Valentine?</h2>
+  <img id="gif" src="bear2.gif" alt="Bear GIF">
+  <h2>YAY! I love you!</h2>
+  <button id="celebrateButton" onclick="showPartyImage()">Celebrate</button>
   <button id="yesButton" onclick="redirectToYippee()">Yes, of course!!!</button>
-  <button id="noButton" onclick="promptUser()">No... (will make me sad)</button>
+  <img id="partyImage" src="party.gif" alt="Party GIF">
 </div>
 
 <script>
@@ -58,26 +54,30 @@
     "Don't sell me on TikTok :((("
   ];
 
-  var currentPhraseIndex = 0;
+  function showPartyImage() {
+    var partyImage = document.getElementById("partyImage");
+    partyImage.style.display = "inline"; // Show the party image
+  }
 
   function redirectToYippee() {
     window.location.href = "yippee.html";
   }
 
+  function getRandomPhrase() {
+    var randomIndex = Math.floor(Math.random() * phrases.length);
+    return phrases[randomIndex];
+  }
+
   function promptUser() {
-    var noButton = document.getElementById("noButton");
+    var noButton = document.getElementById("celebrateButton");
     var yesButton = document.getElementById("yesButton");
 
-    if (currentPhraseIndex < phrases.length) {
-      noButton.innerHTML = phrases[currentPhraseIndex];
-      currentPhraseIndex++;
+    var randomPhrase = getRandomPhrase();
+    noButton.innerHTML = randomPhrase;
 
-      // Increase the size of the green button by 25%
-      var currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
-      yesButton.style.fontSize = (currentSize * 1.25) + "px";
-    } else {
-      redirectToYippee(); // Redirect when all phrases are displayed
-    }
+    // Increase the size of the green button by 25%
+    var currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+    yesButton.style.fontSize = (currentSize * 1.25) + "px";
   }
 </script>
 
