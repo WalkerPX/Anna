@@ -60,8 +60,6 @@
     "Don't sell me on TikTok :((("
   ];
 
-  var currentPhraseIndex = 0;
-
   function redirectToYippee() {
     window.location.href = "yippee.html";
   }
@@ -70,10 +68,11 @@
     var noButton = document.getElementById("noButton");
     var yesButton = document.getElementById("yesButton");
 
-    if (currentPhraseIndex < phrases.length) {
-      noButton.innerHTML = phrases[currentPhraseIndex];
-      currentPhraseIndex++;
+    // Randomize the order of phrases
+    phrases.sort(() => Math.random() - 0.5);
 
+    if (phrases.length > 0) {
+      noButton.innerHTML = phrases.pop();
       // Increase the size of the green button by 25%
       var currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
       yesButton.style.fontSize = (currentSize * 1.25) + "px";
