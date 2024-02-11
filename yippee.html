@@ -23,6 +23,11 @@
       color: black;
       cursor: pointer;
     }
+    #partyImage {
+      display: none; /* Initially hidden */
+      max-width: 100%;
+      height: auto;
+    }
   </style>
 </head>
 <body>
@@ -30,17 +35,29 @@
 <div id="container">
   <img id="gif" src="bear2.gif" alt="Bear GIF">
   <h2>YAY! I love you!</h2>
-  <button id="celebrateButton">Celebrate</button>
+  <button id="celebrateButton" onclick="showPartyImage()">Celebrate</button>
+  <img id="partyImage" src="party.gif" alt="Party GIF">
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.0.1/dist/canvas-confetti.min.js"></script>
-
 <script>
-  document.getElementById('celebrateButton').addEventListener('click', function() {
-    var confettiSettings = { target: 'container' };
-    var confetti = new ConfettiGenerator(confettiSettings);
-    confetti.render();
-  });
+  var phrases = [
+    "Are you sure?",
+    "Do you really want to?",
+    "Are you positive?",
+    "Are you confident about that?",
+    "Do you stand by your choice?",
+    "Are you clear on this?",
+    "Is there no doubt in your mind?",
+    "Do you want to reconsider?",
+    "Are you sure you know what you're doing?",
+    "Is that your final answer?",
+    "Don't sell me on TikTok :((("
+  ];
+
+  function showPartyImage() {
+    var partyImage = document.getElementById("partyImage");
+    partyImage.style.display = "inline"; // Show the party image
+  }
 </script>
 
 </body>
