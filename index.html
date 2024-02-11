@@ -68,15 +68,39 @@
     var noButton = document.getElementById("noButton");
     var yesButton = document.getElementById("yesButton");
 
-    // Randomize the order of phrases
-    phrases.sort(() => Math.random() - 0.5);
-
-    if (phrases.length > 0) {
-      noButton.innerHTML = phrases.pop();
-      // Increase the size of the green button by 25%
-      var currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
-      yesButton.style.fontSize = (currentSize * 1.25) + "px";
+    function showNextPhrase() {
+      if (phrases.length > 0) {
+        noButton.innerHTML = phrases.shift(); // Shift removes the first element and returns it
+        // Increase the size of the green button by 25%
+        var currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+        yesButton.style.fontSize = (currentSize * 1.25) + "px";
+      } else {
+        // If all phrases have been displayed, restart the cycle
+        phrases = [
+          "Are you sure?",
+          "Do you really want to?",
+          "Are you positive?",
+          "Are you confident about that?",
+          "Do you stand by your choice?",
+          "Are you clear on this?",
+          "Is there no doubt in your mind?",
+          "Do you want to reconsider?",
+          "Are you sure you know what you're doing?",
+          "Is that your final answer?",
+          "Don't sell me on TikTok :((("
+        ];
+      }
     }
+
+    // Display the first phrase immediately and set up the interval for the rest
+    showNextPhrase();
+    var intervalId = setInterval(showNextPhrase, 3000); // Change the interval time as needed
+
+    // Stop the interval when the user clicks "Yes"
+    yesButton.onclick = function () {
+      clearInterval(intervalId);
+      redirectToYippee();
+    };
   }
 </script>
 
