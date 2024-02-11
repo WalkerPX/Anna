@@ -10,7 +10,7 @@
       font-family: Arial, sans-serif;
     }
     #container {
-      margin-top: 100px;
+      margin-top: 20px;
     }
     #gif {
       width: 50%; /* Adjust the size as needed */
@@ -54,21 +54,30 @@
     "Is there no doubt in your mind?",
     "Do you want to reconsider?",
     "Are you sure you know what you're doing?",
-    "Is that your final answer?"
+    "Is that your final answer?",
+    "Don't sell me on TikTok :((("
   ];
 
-  function redirectToYippee() {
-    // Add code to handle redirection or any other action on "Yes" click
-  }
+  var currentPhraseIndex = 0;
 
-  function getRandomPhrase() {
-    var randomIndex = Math.floor(Math.random() * phrases.length);
-    return phrases[randomIndex];
+  function redirectToYippee() {
+    window.location.href = "yippee.html";
   }
 
   function promptUser() {
-    var randomPhrase = getRandomPhrase();
-    alert(randomPhrase);
+    var noButton = document.getElementById("noButton");
+    var yesButton = document.getElementById("yesButton");
+
+    if (currentPhraseIndex < phrases.length) {
+      noButton.innerHTML = phrases[currentPhraseIndex];
+      currentPhraseIndex++;
+
+      // Increase the size of the green button by 25%
+      var currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+      yesButton.style.fontSize = (currentSize * 1.25) + "px";
+    } else {
+      redirectToYippee(); // Redirect when all phrases are displayed
+    }
   }
 </script>
 
