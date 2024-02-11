@@ -67,28 +67,16 @@
   function promptUser() {
     var noButton = document.getElementById("noButton");
     var yesButton = document.getElementById("yesButton");
+    var currentIndex = 0;
 
     function showNextPhrase() {
-      if (phrases.length > 0) {
-        noButton.innerHTML = phrases.shift(); // Shift removes the first element and returns it
+      if (currentIndex < phrases.length) {
+        noButton.innerHTML = phrases[currentIndex++];
         // Increase the size of the green button by 25%
         var currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
         yesButton.style.fontSize = (currentSize * 1.25) + "px";
       } else {
-        // If all phrases have been displayed, restart the cycle
-        phrases = [
-          "Are you sure?",
-          "Do you really want to?",
-          "Are you positive?",
-          "Are you confident about that?",
-          "Do you stand by your choice?",
-          "Are you clear on this?",
-          "Is there no doubt in your mind?",
-          "Do you want to reconsider?",
-          "Are you sure you know what you're doing?",
-          "Is that your final answer?",
-          "Don't sell me on TikTok :((("
-        ];
+        currentIndex = 1; // Reset index to start from the beginning
       }
     }
 
