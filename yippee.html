@@ -15,7 +15,7 @@
     #gif {
       width: 50%; /* Adjust the size as needed */
     }
-    #celebrateButton, #yesButton {
+    #celebrateButton {
       font-size: 16px;
       padding: 10px 20px;
       margin-top: 20px;
@@ -37,7 +37,6 @@
   <img id="gif" src="bear2.gif" alt="Bear GIF">
   <h2>YAY! I love you!</h2>
   <button id="celebrateButton" onclick="showPartyImage()">Celebrate</button>
-  <button id="yesButton" onclick="redirectToIndex()">Yes, of course!!!</button>
   <img id="partyImage" src="party.gif" alt="Party GIF">
 </div>
 
@@ -45,10 +44,6 @@
   function showPartyImage() {
     var partyImage = document.getElementById("partyImage");
     partyImage.style.display = "inline"; // Show the party image
-  }
-
-  function redirectToIndex() {
-    window.location.href = "index.html";
   }
 </script>
 
